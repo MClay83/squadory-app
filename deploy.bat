@@ -37,6 +37,9 @@ robocopy dist docs /MIR /NFL /NDL /NJH /NJS
 if errorlevel 8 (echo [ERRO] robocopy falhou & pause & exit /b 1)
 copy /Y docs\index.html docs\404.html
 copy /Y CNAME docs\CNAME
+REM .nojekyll e obrigatorio: sem ele o GitHub Pages roda o Jekyll, que ignora
+REM a pasta _expo (comeca com sublinhado) e o app abre em branco.
+type nul > docs\.nojekyll
 
 echo.
 echo Registrando alteracoes...
